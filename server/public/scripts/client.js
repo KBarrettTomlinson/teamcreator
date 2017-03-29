@@ -1,10 +1,25 @@
 //global variables
 
 //document ready
+$( document ).ready(function(){
+  console.log( "I'm here for you." );
+  init();
+});
 
 //function init
+function init(){
+  console.log( "inside function init");
+  enable();
+}//ends init
 
 //function enable
+function enable(){
+  console.log( "inside enable" );
+  //on click generateTeam -  gets PEOPLE
+  //on click save team - posts Team
+  //on click toggle between views - gets teams
+}
+
 
 //event handlers
 
