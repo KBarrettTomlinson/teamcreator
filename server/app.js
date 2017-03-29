@@ -7,6 +7,20 @@ var port = 3000;
 // var people = require('./routes/people.js');
 // var teams = require('./routes/teams.js');
 
+//mongoose config
+var mongoose = require("mongoose");
+var mongoURI = "mongodb://localhost:27017/teamsdata";
+var MongoDB = mongoose.connect(mongoURI).connection;
+
+MongoDB.on("error", function(err){
+  console.log("Mongo Connection Error :" + err);
+});
+
+//If we successfully hooked up to the database, let us know!
+MongoDB.once("open", function(){
+  console.log("Tots connected to Mongo, meow.");
+});
+
 // uses
 app.use(express.static('server/public'));
 app.use(bodyParser.urlencoded({extended: true}));
