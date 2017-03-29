@@ -30,11 +30,15 @@ function enable(){
     console.log( "inside generate team" );
     retrieveNumTeams();
     getPeople();
+    randomizePeople();
+    assignTeams();
+    displayTeam();
   }//ends generateTeam
 
   //click save teams
   function saveTeam(){
       console.log( "inside saveTeam" );
+
   }//ends saveTeam
 
   //toggle past teams
@@ -42,19 +46,38 @@ function enable(){
 //logic
 function retrieveNumTeams(){
   console.log( "inside retrieveNumTeams" );
-
 }//ends retrieveNumTeams
 
+function randomizePeople(){
+  console.log( "inside randomizePeople" );
+}//ends randomizePeople
+
+function assignTeams(){
+  console.log( "inside assignTeams" );
+
+}//ends assignTeams
+
 //DOM methods
+function displayTeam(){
+  console.log( "inside displayTeam" );
+
+}//ends displayTeam
+
 
 //REST interface
 
   //get /people -GET PEOPLE
   function getPeople(){
     console.log( "inside getPeople" );
-
   }//ends ajax get getPeople
 
   //get /teams -GET PAST teams
+  function getTeams(){
+    console.log( "inside getTeams");
+  }//ends ajax get getTeams
 
   //post /teams -POST CURRENT teams
+  function postTeam(){
+    console.log( "inside postTeam" );
+
+  }//ends ajax post postTeam
