@@ -1,5 +1,6 @@
 //global variables
-
+var peopleArray = [];
+var randomArray = [];
 //document ready
 $( document ).ready(function(){
   console.log( "I'm here for you." );
@@ -34,8 +35,8 @@ function enable(value){
   function generateTeam(){
     console.log( "inside generate team" );
     retrieveNumTeams();
-    getPeople();
-    randomizePeople();
+    peopleArray = getPeople();
+    randomArray = randomizePeople(peopleArray);
     assignTeams();
     displayTeam();
   }//ends generateTeam
@@ -57,8 +58,22 @@ function retrieveNumTeams(){
   console.log( "the number of teams they want", numTeams);
 }//ends retrieveNumTeams
 
-function randomizePeople(){
+function randomizePeople(array){
   console.log( "inside randomizePeople" );
+//   var randArray = [];
+// while (peopleArray.length > 0) {
+// var randInt = Math.floor(Math.random()*peopleArray.length);
+// var randPerson = peopleArray.splice(randInt, 1);
+// randArray.push(randPerson);
+// }
+  while (array.length > 0) {
+    var randInt = Math.floor(Math.random() * array.length);
+    console.log ( "inside while loop randInt:", randInt );
+    var randPerson = array.splice(randInt, 1);
+    console.log ( "inside while loop randPerson:", randPerson);
+    randomArray.push(randPerson);
+    console.log ( "inside while loop randomArray:", randomArray);
+  }//ends while loop
 }//ends randomizePeople
 
 function assignTeams(){
@@ -78,6 +93,14 @@ function displayTeam(){
   //get /people -GET PEOPLE
   function getPeople(){
     console.log( "inside getPeople" );
+    $.ajax({
+        type: 'GET',
+        url: '/people',
+        success: function(response){
+          console.log( "I've come back from /people, and I brought this:", response);
+          return response;
+        }//end success
+    });//ends ajax GET
   }//ends ajax get getPeople
 
   //get /teams -GET PAST teams
