@@ -3,6 +3,7 @@ var peopleArray = [];
 var randomArray = [];
 var teamsArray= [];
 var newTeams = true;
+var pastTeamsOff = true;
 //document ready
 $( document ).ready(function(){
   console.log( "I'm here for you." );
@@ -22,12 +23,12 @@ function enable(value){
   if(value){
     $( '#numberOfTeamsBtn' ).on( 'click', generateTeam);
     $( '#outputDiv').on( 'click', '#confirmBtn', saveTeam);
-    //$( '#outputDiv').on( 'click', '.generateTeamBtn', generateAllTeams);
+    $( '#showPastTeams').on( 'click', pastTeamsToggle);
   }//ends if
   else{
     $( '#numberOfTeamsBtn' ).off( 'click', generateTeam);
     $( '#outputDiv').off( 'click', '#confirmBtn', saveTeam);
-    //$( '#outputDiv').off( 'click', '.generateTeamBtn', generateAllTeams);
+    $( '#showPastTeams').off( 'click', pastTeamsToggle);
   }
 }//ends function enable
 
@@ -37,6 +38,7 @@ function enable(value){
   function generateTeam(){
     console.log( "inside generate team" );
     var numTeams = retrieveNumTeams();
+    $( '#outputDiv' ).empty();
     getPeople(numTeams);
   }//ends generateTeam
 
@@ -47,8 +49,21 @@ function enable(value){
   }//ends saveTeam
 
   //toggle past teams
+  function pastTeamsToggle() {
+    if (pastTeamsOff) {
+      viewAllTeams();
+      pastTeamsOff = false;
+    } else {
+      $('#pastOutputDiv').empty();
+      pastTeamsOff = true;
+    }
+  }//ends pastTeamsToggle
+
+  //clears div and shows past teams
   function viewAllTeams(){
     console.log( "inside viewAllTeams");
+    $('#pastOutputDiv').empty();
+    getTeams();
   }//ends viewAllTeams
 
 //logic
@@ -104,7 +119,7 @@ function displayTeam(teamsArray){
   }
   // for loop that appends 1 team
   for ( var i = 0; i < teamsArray.length; i++){
-    $el.append( '<div class = "col-md-4" "team"></div>');
+    $el.append( '<div class = "col-md-4" "col-sm3" "team"></div>');
     var $el1 = $el.children().last();
     $el1.append( '<p class = "teamNumber">Team '+(i+1)+'</p>');
 
@@ -112,11 +127,20 @@ function displayTeam(teamsArray){
       $el1.append('<p class = "teamMember">'+teamsArray[i][j].person+'</p>');
     }//ends for loop that appends team members
   }//ends team append for loop
+<<<<<<< HEAD
+  $el.append('<div class="btn-group">' +
+  '<button type="button" id= "confirmBtn" class="btn btn-primary btn-lg">' +
+  'Confirm Teams</button></div>');
+
+
 
 }//ends displayTeam
 
 function addConfirmButton(){
-    $( '#outputDiv').append('<div class="btn-group">' +
+    var $el = $ ( '#outputDiv');
+    $el.append('<div class="row"></div>');
+    $el1 = $el.children().last();
+    $el1.append('<div class="btn-group">' +
     '<button type="button" id= "confirmBtn" class="btn btn-primary btn-lg">' +
     'Confirm Teams</button></div>');
   }//ends addConfirmButton
