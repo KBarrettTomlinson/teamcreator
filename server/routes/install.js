@@ -1,12 +1,13 @@
 var express = require("express");
 var router = express.Router();
 var mongoose = require("mongoose");
+var People = require('./people.js').People;
 
-var PersonSchema = mongoose.Schema({
-  name : String
-});
+// var PersonSchema = mongoose.Schema({
+//   name : String
+// });
 
-var People = mongoose.model("People", PersonSchema);
+// var People = mongoose.model("People", PersonSchema);
 
 var chiYaks = ["Anna", "Betsy", "Chris", "Craig", "Dan", "Emily", "Erin","Keith", "Kevin", "Lisa", "Logan", "Olga", "Y Paul", "Teigen", "Claudia", "Nic", "Anisa", "Briana"];
 
@@ -18,7 +19,7 @@ function addPeopleToDatabase(array) {
 
 function savePerson(name) {
   var person = new People();
-  person.name = name;
+  person.person = person;
   person.save(function(err, savedPerson) {
     if(err){
       console.log(err);
