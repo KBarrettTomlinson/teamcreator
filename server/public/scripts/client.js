@@ -23,7 +23,9 @@ function enable(value){
   if(value){
     $( '#numberOfTeamsBtn' ).on( 'click', generateTeam);
     $( '#outputDiv').on( 'click', '#confirmBtn', saveTeam);
-    $( '#showPastTeams').on( 'click', pastTeamsToggle);
+    $( '#showPastTeams').on( 'click', function() {
+      pastTeamsToggle(true);
+    });
   }//ends if
   else{
     $( '#numberOfTeamsBtn' ).off( 'click', generateTeam);
@@ -46,14 +48,16 @@ function enable(value){
   function saveTeam(){
       console.log( "inside saveTeam" );
       postTeam();
-      viewAllTeams();
+      pastTeamsToggle(false);
   }//ends saveTeam
 
   //toggle past teams
-  function pastTeamsToggle() {
+  function pastTeamsToggle(value) {
     if (pastTeamsOff) {
-      viewAllTeams();
-      pastTeamsOff = false;
+      if (value) {
+        viewAllTeams();
+        pastTeamsOff = false;
+      }
     } else {
       $('#pastOutputDiv').empty();
       pastTeamsOff = true;
@@ -62,9 +66,9 @@ function enable(value){
 
   //clears div and shows past teams
   function viewAllTeams(){
-    console.log( "inside viewAllTeams");
-    $('#pastOutputDiv').empty();
-    getTeams();
+      console.log( "inside viewAllTeams");
+      $('#pastOutputDiv').empty();
+      getTeams();
   }//ends viewAllTeams
 
 //logic
