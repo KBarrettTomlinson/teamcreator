@@ -38,6 +38,7 @@ function enable(value){
   function generateTeam(){
     console.log( "inside generate team" );
     var numTeams = retrieveNumTeams();
+    $( '#outputDiv' ).empty();
     getPeople(numTeams);
   }//ends generateTeam
 
@@ -130,7 +131,10 @@ function displayTeam(teamsArray){
 }//ends displayTeam
 
 function addConfirmButton(){
-    $( '#outputDiv').append('<div class="btn-group">' +
+    var $el = $ ( '#outputDiv');
+    $el.append('<div class="row"></div>');
+    $el1 = $el.children().last();
+    $el1.append('<div class="btn-group">' +
     '<button type="button" id= "confirmBtn" class="btn btn-primary btn-lg">' +
     'Confirm Teams</button></div>');
   }//ends addConfirmButton
