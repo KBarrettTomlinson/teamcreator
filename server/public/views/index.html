@@ -16,14 +16,27 @@
     <div class="container">
 
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
           <form class="form-inline">
             <div class="form-team">
-              <label for="numberOfTeams">How many teams?</label>
-              <input type="text" name="newTask" data-task="newTask" placeholder="number of teams needed"id="newTeams">
+              <label for="numberOfTeams"></label>
+              <input type="text" name="newTask" data-task="newTask" placeholder="number of teams needed"id="newByTeams">
             </div>
             <div class="btn-group">
-              <button type="button" id= "getTeamBtn" class="btn btn-primary btn-lg">Generate Teams</button>
+              <button type="button" id= "numberOfTeamsBtn" class="btn btn-primary btn-lg">Generate Teams</button>
+
+            </div>
+          </form>
+        </div>
+
+        <div class="col-md-6">
+          <form class="form-inline">
+            <div class="form-team">
+              <label for="numberOfMembers"></label>
+              <input type="text" name="newTask" data-task="newTask" placeholder="number of people per team"id="newByMembers">
+            </div>
+            <div class="btn-group">
+              <button type="button" id= "numberOfMembersBtn" class="btn btn-primary btn-lg">Generate Teams</button>
 
             </div>
           </form>
