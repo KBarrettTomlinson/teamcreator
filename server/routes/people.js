@@ -8,7 +8,7 @@ var PersonSchema = mongoose.Schema({
   person: String,
 });
 
-var People = mongoose.model('People', PersonSchema);
+var People = mongoose.model('Peoples', PersonSchema);
 
 // routes
 router.get('/', function(req, res) {
