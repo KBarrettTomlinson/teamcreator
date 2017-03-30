@@ -23,10 +23,10 @@ function savePerson(name) {
     if(err){
       console.log(err);
     }
-    console.log(savedEmployee);
+    console.log(savedPerson);
   });
 }
-router.get("/", function(req,res){
+router.get('/', function(req,res){
   console.log("in install");
   addPeopleToDatabase(chiYaks);
   res.sendStatus(201);

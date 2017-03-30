@@ -3,9 +3,9 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var port = 3000;
-// var index = require('./routes/index.js');
-// var people = require('./routes/people.js');
-// var teams = require('./routes/teams.js');
+var index = require('./routes/index.js');
+var people = require('./routes/people.js');
+var teams = require('./routes/teams.js');
 var install =  require('./routes/install.js');
 
 //mongoose config
