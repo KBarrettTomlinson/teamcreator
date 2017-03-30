@@ -148,6 +148,16 @@ function displayTeam(teamsArray){
   //get /teams -GET PAST teams
   function getTeams(){
     console.log( "inside getTeams");
+    $.ajax({
+      type: 'GET',
+      URL: '/teams',
+      success: function (response) {
+        console.log("Reponse from GET /teams", response);
+        for (var i = 0; i < response.length; i++) {
+          displayTeam(response[i]);
+        }
+      }
+    });
   }//ends ajax get getTeams
 
   //post /teams -POST CURRENT teams
