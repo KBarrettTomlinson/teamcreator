@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var mongoose = require("mongoose");
-var People = require("./routes/people.js").People;
+var People = require('./people.js').People;
 
 // var PersonSchema = mongoose.Schema({
 //   name : String
