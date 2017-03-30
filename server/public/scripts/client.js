@@ -26,18 +26,6 @@ function enable(value){
     //$( '#outputDiv').off( 'click', '.saveTeamBtn', saveTeam);
     //$( '#outputDiv').off( 'click', '.generateTeamBtn', generateAllTeams);
   }
-
-
-//   if(value){
-//   $(".submitEmployee").on("click", clickSubmit);
-//   $(".employeeContainer").on("click", ".delete-btn", clickDelete);
-//   $(".employeeContainer").on("click", ".update-btn", clickUpdate);
-// } else {
-//   $(".submitEmployee").off("click", clickSubmit);
-//   $(".employeeContainer").off("click", ".delete-btn", clickDelete);
-//   $(".employeeContainer").on("click", ".update-btn", clickUpdate);
-// }
-// }
 }
 
 
@@ -65,6 +53,8 @@ function enable(value){
 //logic
 function retrieveNumTeams(){
   console.log( "inside retrieveNumTeams" );
+  var numTeams = $( '#newTeams' ).val();
+  console.log( "the number of teams they want", numTeams);
 }//ends retrieveNumTeams
 
 function randomizePeople(){
