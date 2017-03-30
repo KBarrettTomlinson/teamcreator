@@ -58,15 +58,19 @@ function retrieveNumTeams(){
 }//ends retrieveNumTeams
 
 function randomizePeople(array){
-  console.log( "inside randomizePeople" );
-  while (array.length > 0) {
-    var randInt = Math.floor(Math.random() * array.length);
-    var randPerson = array.splice(randInt, 1);
-    console.log("inside randomizePeople while loop randPerson", randPerson);
-    randomArray.push(randPerson);
-  }//ends while loop
-  console.log( "after the while loop is done randomArray:", randomArray);
-  return randomArray;
+  console.log("inside randomizePeople");
+  var m = array.length,
+      t, i;
+  // While there remain elements to shuffle…
+  while (m) {
+      // Pick a remaining element…
+      i = Math.floor(Math.random() * m--);
+      // And swap it with the current element.
+      t = array[m];
+      array[m] = array[i];
+      array[i] = t;
+  }
+  return array;
 }//ends randomizePeople
 
 function assignTeams(numTeams, randArray){
