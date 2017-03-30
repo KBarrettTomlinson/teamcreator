@@ -1,14 +1,28 @@
-body {
-  background-color: #ede8e3;
-  font-size: 30px;
+#top {
+  background-color: #dbc1b8;
+  border-style: double 2px;
+  min-height: 15  0px;
 }
 
+
+body {
+  background-color: #fcf6f4;
+  font-size: 30px;
+  color: #51555b;
+}
+.btn-color {
+   background-color:  #9b847c;
+   color: white;
+ }
+.container {
+  border-style: double;
+}
 
 .teamNumber {
-  border-bottom: 3px solid darkgray;
+  border-bottom: 3px solid #51555b;
 }
 
-[class*='col-md-4']:hover{
+[class*='col-md-4' 'col-sm-3']:hover{
   min-height: 50px;
-  border: 1px solid darkgray;
+  border: 1px solid #51555b;
 }
