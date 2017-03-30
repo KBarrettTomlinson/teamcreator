@@ -1,6 +1,7 @@
 //global variables
 var peopleArray = [];
 var randomArray = [];
+var teamsArray= [];
 //document ready
 $( document ).ready(function(){
   console.log( "I'm here for you." );
@@ -34,11 +35,11 @@ function enable(value){
   //click generate teams
   function generateTeam(){
     console.log( "inside generate team" );
-    retrieveNumTeams();
+    var numTeams = retrieveNumTeams();
     peopleArray = getPeople();
     randomArray = randomizePeople(peopleArray);
-    assignTeams();
-    displayTeam();
+    teamsArray = assignTeams(randomArray);
+    displayTeam(numTeams, teamsArray);
   }//ends generateTeam
 
   //click save teams
@@ -56,16 +57,11 @@ function retrieveNumTeams(){
   console.log( "inside retrieveNumTeams" );
   var numTeams = $( '#newTeams' ).val();
   console.log( "the number of teams they want", numTeams);
+  return numTeams;
 }//ends retrieveNumTeams
 
 function randomizePeople(array){
   console.log( "inside randomizePeople" );
-//   var randArray = [];
-// while (peopleArray.length > 0) {
-// var randInt = Math.floor(Math.random()*peopleArray.length);
-// var randPerson = peopleArray.splice(randInt, 1);
-// randArray.push(randPerson);
-// }
   while (array.length > 0) {
     var randInt = Math.floor(Math.random() * array.length);
     console.log ( "inside while loop randInt:", randInt );
@@ -74,6 +70,8 @@ function randomizePeople(array){
     randomArray.push(randPerson);
     console.log ( "inside while loop randomArray:", randomArray);
   }//ends while loop
+  console.log( "after the while loop is done randomArray:", randomArray);
+  return randomArray;
 }//ends randomizePeople
 
 function assignTeams(){
@@ -82,7 +80,7 @@ function assignTeams(){
 }//ends assignTeams
 
 //DOM methods
-function displayTeam(){
+function displayTeam(num, array){
   console.log( "inside displayTeam" );
 
 }//ends displayTeam
