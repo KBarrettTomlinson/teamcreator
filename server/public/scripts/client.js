@@ -105,7 +105,9 @@ function displayTeam(teamsArray){
       $el1.append('<p class = "teamMember">'+teamsArray[i][j].person+'</p>');
     }//ends for loop that appends team members
   }//ends team append for loop
-
+  $el.append('<div class="btn-group">' +
+  '<button type="button" id= "confirmBtn" class="btn btn-primary btn-lg">' + 
+  'Confirm Teams</button></div>');
 
 
 
@@ -153,5 +155,15 @@ function displayTeam(teamsArray){
   //post /teams -POST CURRENT teams
   function postTeam(){
     console.log( "inside postTeam" );
+    console.log ("I think you're trying to send this:", teamsArray);
+    var teamObject = {groupsArray: teamsArray};
+    $.ajax({
+      type: 'POST',
+      url: '/teams',
+      data: teamObject,
+      success: function(response){
+        console.log("I posted your thing!", response);
+      }
+    });
 
   }//ends ajax post postTeam
