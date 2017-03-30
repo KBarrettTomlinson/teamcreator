@@ -2,6 +2,7 @@
 var peopleArray = [];
 var randomArray = [];
 var teamsArray= [];
+var newTeams = true;
 //document ready
 $( document ).ready(function(){
   console.log( "I'm here for you." );
@@ -20,15 +21,15 @@ function enable(value){
   //on click generateTeam -  gets PEOPLE
   if(value){
     $( '#numberOfTeamsBtn' ).on( 'click', generateTeam);
-    //$( '#outputDiv').on( 'click', '.saveTeamBtn', saveTeam);
+    $( '#outputDiv').on( 'click', '#confirmBtn', saveTeam);
     //$( '#outputDiv').on( 'click', '.generateTeamBtn', generateAllTeams);
   }//ends if
   else{
     $( '#numberOfTeamsBtn' ).off( 'click', generateTeam);
-    //$( '#outputDiv').off( 'click', '.saveTeamBtn', saveTeam);
+    $( '#outputDiv').off( 'click', '#confirmBtn', saveTeam);
     //$( '#outputDiv').off( 'click', '.generateTeamBtn', generateAllTeams);
   }
-}
+}//ends function enable
 
 
 //event handlers
@@ -36,12 +37,14 @@ function enable(value){
   function generateTeam(){
     console.log( "inside generate team" );
     var numTeams = retrieveNumTeams();
+    $( '#outputDiv' ).empty();
     getPeople(numTeams);
   }//ends generateTeam
 
   //click save teams
   function saveTeam(){
       console.log( "inside saveTeam" );
+      postTeam();
   }//ends saveTeam
 
   //toggle past teams
@@ -93,8 +96,13 @@ function assignTeams(numTeams, randArray){
 function displayTeam(teamsArray){
   console.log( "inside displayTeam" );
   console.log( "inside displayTeam, teamsArray", teamsArray);
-
-  var $el = $ ( '#outputDiv' );
+  var $el;
+  if (newTeams === true){
+  $el = $ ( '#outputDiv' );
+  }
+  else{
+    $el = $ ( '#pastOutputDiv' );
+  }
   // for loop that appends 1 team
   for ( var i = 0; i < teamsArray.length; i++){
     $el.append( '<div class = "col-md-4" "col-sm3" "team"></div>');
@@ -105,27 +113,23 @@ function displayTeam(teamsArray){
       $el1.append('<p class = "teamMember">'+teamsArray[i][j].person+'</p>');
     }//ends for loop that appends team members
   }//ends team append for loop
+<<<<<<< HEAD
   $el.append('<div class="btn-group">' +
   '<button type="button" id= "confirmBtn" class="btn btn-primary btn-lg">' +
   'Confirm Teams</button></div>');
 
 
 
-
-
-  // <div class="row">
-  //       <div class="col-md-4" "teamFour">
-  //         <p class= teamNumber>Team 4</p>
-  //       </div>
-  //       <div class="col-md-4" "teamFive">
-  //         <p class= teamNumber>Team 5</p>
-  //       </div>
-  //       <div class="col-md-4" "teamSix">
-  //         <p class= teamNumber>Team 6</p>
-  //       </div>
-  // </div>
-
 }//ends displayTeam
+
+function addConfirmButton(){
+    var $el = $ ( '#outputDiv');
+    $el.append('<div class="row"></div>');
+    $el1 = $el.children().last();
+    $el1.append('<div class="btn-group">' +
+    '<button type="button" id= "confirmBtn" class="btn btn-primary btn-lg">' +
+    'Confirm Teams</button></div>');
+  }//ends addConfirmButton
 
 
 //REST interface
@@ -136,6 +140,7 @@ function displayTeam(teamsArray){
         type: 'GET',
         url: '/people',
         success: function(response){
+          newTeams = true;
           console.log( "I've come back from /people, and I brought this:", response);
           console.log( "this is response[4]", response[4]);
           console.log( "inside getPeople numTeams", numTeams);
@@ -143,6 +148,7 @@ function displayTeam(teamsArray){
           teamsArray = assignTeams(numTeams, randomArray);
           console.log( "inside get people after assignTeams, teamsArray", teamsArray);
           displayTeam(teamsArray);
+          addConfirmButton();
         }//end success
     });//ends ajax GET
   }//ends ajax get getPeople
@@ -150,10 +156,31 @@ function displayTeam(teamsArray){
   //get /teams -GET PAST teams
   function getTeams(){
     console.log( "inside getTeams");
+    $.ajax({
+      type: 'GET',
+      url: '/teams',
+      success: function (response) {
+        console.log("Reponse from GET /teams", response);
+        newTeams = false;
+        for (var i = 0; i < response.length; i++) {
+          displayTeam(response[i].groupsArray);
+        }
+      }
+    });
   }//ends ajax get getTeams
 
   //post /teams -POST CURRENT teams
   function postTeam(){
     console.log( "inside postTeam" );
+    console.log ("I think you're trying to send this:", teamsArray);
+    var teamObject = {groupsArray: teamsArray};
+    $.ajax({
+      type: 'POST',
+      url: '/teams',
+      data: teamObject,
+      success: function(response){
+        console.log("I posted your thing!", response);
+      }
+    });
 
   }//ends ajax post postTeam
