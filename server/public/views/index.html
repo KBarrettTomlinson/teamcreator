@@ -15,7 +15,7 @@
   <body>
     <div class="container">
 
-      <div class="row">
+      <div class="row" id="top">
 
             <div class="col-md-6">
               <form class="form-inline">
@@ -24,12 +24,12 @@
                   <input type="text" name="newTask" data-task="newTask" id="newByTeams">
                 </div>
                 <div class="btn-group">
-                  <button type="button" id= "numberOfTeamsBtn" class="btn btn-primary btn-lg">Generate Teams</button>
+                  <button type="button" id= "numberOfTeamsBtn" class="btn btn-color btn-lg">Generate Teams</button>
                 </div>
               </form>
             </div>
 
-            <div class="col-md-6">
+            <!-- <div class="col-md-6">
               <form class="form-inline">
                 <div class="form-team">
                   <label for="numberOfMembers">How many peoples per team?</label>
@@ -39,11 +39,17 @@
                   <button type="button" id= "numberOfMembersBtn" class="btn btn-primary btn-lg">Generate Teams</button>
                 </div>
               </form>
-            </div>
+            </div> -->
       </div>
 
       <div class="row" "outputDiv" id=outputDiv>
+      </div>
 
+      <div class="row">
+        <button type="button" name="button" id= "showPastTeams" class="btn btn-color btn-lg ">Show Past Teams</button>
+      </div>
+
+      <div class="row" "pastOutputDiv" id=pastOutputDiv>
       </div>
 
     </div>

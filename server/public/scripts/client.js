@@ -119,7 +119,7 @@ function displayTeam(teamsArray){
   }
   // for loop that appends 1 team
   for ( var i = 0; i < teamsArray.length; i++){
-    $el.append( '<div class = "col-md-4" "team"></div>');
+    $el.append( '<div class = "col-md-4" "col-sm3" "team"></div>');
     var $el1 = $el.children().last();
     $el1.append( '<p class = "teamNumber">Team '+(i+1)+'</p>');
 
@@ -127,6 +127,12 @@ function displayTeam(teamsArray){
       $el1.append('<p class = "teamMember">'+teamsArray[i][j].person+'</p>');
     }//ends for loop that appends team members
   }//ends team append for loop
+<<<<<<< HEAD
+  $el.append('<div class="btn-group">' +
+  '<button type="button" id= "confirmBtn" class="btn btn-primary btn-lg">' +
+  'Confirm Teams</button></div>');
+
+
 
 }//ends displayTeam
 
