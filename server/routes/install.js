@@ -19,7 +19,7 @@ function addPeopleToDatabase(array) {
 
 function savePerson(name) {
   var person = new People();
-  person.name = name;
+  person.person = person;
   person.save(function(err, savedPerson) {
     if(err){
       console.log(err);
