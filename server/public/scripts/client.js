@@ -128,10 +128,6 @@ function displayTeam(teamsArray){
     }//ends for loop that appends team members
   }//ends team append for loop
 
-  $el.append('<div class="btn-group">' +
-  '<button type="button" id= "confirmBtn" class="btn btn-primary btn-lg">' +
-  'Confirm Teams</button></div>');
-
 
 
 }//ends displayTeam
