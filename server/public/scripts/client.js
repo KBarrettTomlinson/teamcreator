@@ -59,11 +59,14 @@ function retrieveNumTeams(){
 
 function randomizePeople(array){
   console.log( "inside randomizePeople" );
+  console.log( "inside randomizePeople, array:", array);
+  console.log( "inside randomizePeople, array[4]:", array[4]);
   while (array.length > 0) {
     var randInt = Math.floor(Math.random() * array.length);
     var randPerson = array.splice(randInt, 1);
     console.log("inside randomizePeople while loop randPerson", randPerson);
     randomArray.push(randPerson);
+    console.log("inside randomizePeople while loop randomArray[0]", randomArray[0]);
   }//ends while loop
   console.log( "after the while loop is done randomArray:", randomArray);
   return randomArray;
@@ -82,17 +85,38 @@ function assignTeams(numTeams, randArray){
     teamsArray[i % numTeams].push(randArray[i]);
   }//ends for loop add people to teamsdata
   console.log( "inside assignTeams, teamsArray", teamsArray);
+  return teamsArray;
 }//ends assignTeams
 
 //DOM methods
-function displayTeam(num, array){
+function displayTeam(teamsArray){
   console.log( "inside displayTeam" );
+  console.log( "inside displayTeam, teamsArray", teamsArray);
+
+  var $el = $ ( '#outputDiv' );
+  // for loop that appends 1 team
+    //for loop that appends team members
+
+
+
+
+
+  // <div class="row">
+  //       <div class="col-md-4" "teamFour">
+  //         <p class= teamNumber>Team 4</p>
+  //       </div>
+  //       <div class="col-md-4" "teamFive">
+  //         <p class= teamNumber>Team 5</p>
+  //       </div>
+  //       <div class="col-md-4" "teamSix">
+  //         <p class= teamNumber>Team 6</p>
+  //       </div>
+  // </div>
 
 }//ends displayTeam
 
 
 //REST interface
-
   //get /people -GET PEOPLE
   function getPeople(numTeams){
     console.log( "inside getPeople" );
@@ -101,9 +125,11 @@ function displayTeam(num, array){
         url: '/people',
         success: function(response){
           console.log( "I've come back from /people, and I brought this:", response);
-          console.log("inside getPeople numTeams", numTeams);
+          console.log( "this is response[4]", response[4]);
+          console.log( "inside getPeople numTeams", numTeams);
           randomArray = randomizePeople(response);
           teamsArray = assignTeams(numTeams, randomArray);
+          console.log( "inside get people after assignTeams, teamsArray", teamsArray);
           displayTeam(teamsArray);
         }//end success
     });//ends ajax GET
