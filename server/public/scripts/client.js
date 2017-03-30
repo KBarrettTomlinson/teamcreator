@@ -20,15 +20,15 @@ function enable(value){
   //on click generateTeam -  gets PEOPLE
   if(value){
     $( '#numberOfTeamsBtn' ).on( 'click', generateTeam);
-    //$( '#outputDiv').on( 'click', '.saveTeamBtn', saveTeam);
+    $( '#outputDiv').on( 'click', '#confirmBtn', saveTeam);
     //$( '#outputDiv').on( 'click', '.generateTeamBtn', generateAllTeams);
   }//ends if
   else{
     $( '#numberOfTeamsBtn' ).off( 'click', generateTeam);
-    //$( '#outputDiv').off( 'click', '.saveTeamBtn', saveTeam);
+    $( '#outputDiv').off( 'click', '#confirmBtn', saveTeam);
     //$( '#outputDiv').off( 'click', '.generateTeamBtn', generateAllTeams);
   }
-}
+}//ends function enable
 
 
 //event handlers
@@ -42,6 +42,7 @@ function enable(value){
   //click save teams
   function saveTeam(){
       console.log( "inside saveTeam" );
+      postTeam();
   }//ends saveTeam
 
   //toggle past teams
@@ -105,24 +106,9 @@ function displayTeam(teamsArray){
       $el1.append('<p class = "teamMember">'+teamsArray[i][j].person+'</p>');
     }//ends for loop that appends team members
   }//ends team append for loop
-
-
-
-
-
-
-  // <div class="row">
-  //       <div class="col-md-4" "teamFour">
-  //         <p class= teamNumber>Team 4</p>
-  //       </div>
-  //       <div class="col-md-4" "teamFive">
-  //         <p class= teamNumber>Team 5</p>
-  //       </div>
-  //       <div class="col-md-4" "teamSix">
-  //         <p class= teamNumber>Team 6</p>
-  //       </div>
-  // </div>
-
+  $el.append('<div class="btn-group">' +
+  '<button type="button" id= "confirmBtn" class="btn btn-primary btn-lg">' +
+  'Confirm Teams</button></div>');
 }//ends displayTeam
 
 
@@ -163,5 +149,15 @@ function displayTeam(teamsArray){
   //post /teams -POST CURRENT teams
   function postTeam(){
     console.log( "inside postTeam" );
+    console.log ("I think you're trying to send this:", teamsArray);
+    var teamObject = {groupsArray: teamsArray};
+    $.ajax({
+      type: 'POST',
+      url: '/teams',
+      data: teamObject,
+      success: function(response){
+        console.log("I posted your thing!", response);
+      }
+    });
 
   }//ends ajax post postTeam
