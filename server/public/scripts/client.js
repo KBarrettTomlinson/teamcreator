@@ -106,10 +106,14 @@ function displayTeam(teamsArray){
       $el1.append('<p class = "teamMember">'+teamsArray[i][j].person+'</p>');
     }//ends for loop that appends team members
   }//ends team append for loop
-  $el.append('<div class="btn-group">' +
-  '<button type="button" id= "confirmBtn" class="btn btn-primary btn-lg">' +
-  'Confirm Teams</button></div>');
+
 }//ends displayTeam
+
+function addConfirmButton(){
+    $( '#outputDiv').append('<div class="btn-group">' +
+    '<button type="button" id= "confirmBtn" class="btn btn-primary btn-lg">' +
+    'Confirm Teams</button></div>');
+  }//ends addConfirmButton
 
 
 //REST interface
@@ -127,6 +131,7 @@ function displayTeam(teamsArray){
           teamsArray = assignTeams(numTeams, randomArray);
           console.log( "inside get people after assignTeams, teamsArray", teamsArray);
           displayTeam(teamsArray);
+          addConfirmButton();
         }//end success
     });//ends ajax GET
   }//ends ajax get getPeople
