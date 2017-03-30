@@ -2,6 +2,7 @@
 var peopleArray = [];
 var randomArray = [];
 var teamsArray= [];
+var newTeams = true;
 //document ready
 $( document ).ready(function(){
   console.log( "I'm here for you." );
@@ -94,8 +95,13 @@ function assignTeams(numTeams, randArray){
 function displayTeam(teamsArray){
   console.log( "inside displayTeam" );
   console.log( "inside displayTeam, teamsArray", teamsArray);
-
-  var $el = $ ( '#outputDiv' );
+  var $el;
+  if (newTeams === true){
+  $el = $ ( '#outputDiv' );
+  }
+  else{
+    $el = $ ( '#pastOutputDiv' );
+  }
   // for loop that appends 1 team
   for ( var i = 0; i < teamsArray.length; i++){
     $el.append( '<div class = "col-md-4" "team"></div>');
@@ -124,6 +130,7 @@ function addConfirmButton(){
         type: 'GET',
         url: '/people',
         success: function(response){
+          newTeams = true;
           console.log( "I've come back from /people, and I brought this:", response);
           console.log( "this is response[4]", response[4]);
           console.log( "inside getPeople numTeams", numTeams);
@@ -139,6 +146,7 @@ function addConfirmButton(){
   //get /teams -GET PAST teams
   function getTeams(){
     console.log( "inside getTeams");
+    newTeams = false;
   }//ends ajax get getTeams
 
   //post /teams -POST CURRENT teams
