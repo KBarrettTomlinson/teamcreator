@@ -9,18 +9,35 @@ $( document ).ready(function(){
 //function init
 function init(){
   console.log( "inside function init");
-  enable();
+  enable(true);
 }//ends init
 
 //function enable
-function enable(){
+function enable(value){
   console.log( "inside enable" );
   //on click generateTeam -  gets PEOPLE
-  generateTeam();
-  //on click save team - posts Team
-  saveTeam();
-  //on click toggle between views - gets teams
-  generateAllTeams();
+  if(value){
+    $( '#getTeamBtn' ).on( 'click', generateTeam);
+    //$( '#outputDiv').on( 'click', '.saveTeamBtn', saveTeam);
+    //$( '#outputDiv').on( 'click', '.generateTeamBtn', generateAllTeams);
+  }//ends if
+  else{
+    $( '#getTeamBtn' ).off( 'click', generateTeam);
+    //$( '#outputDiv').off( 'click', '.saveTeamBtn', saveTeam);
+    //$( '#outputDiv').off( 'click', '.generateTeamBtn', generateAllTeams);
+  }
+
+
+//   if(value){
+//   $(".submitEmployee").on("click", clickSubmit);
+//   $(".employeeContainer").on("click", ".delete-btn", clickDelete);
+//   $(".employeeContainer").on("click", ".update-btn", clickUpdate);
+// } else {
+//   $(".submitEmployee").off("click", clickSubmit);
+//   $(".employeeContainer").off("click", ".delete-btn", clickDelete);
+//   $(".employeeContainer").on("click", ".update-btn", clickUpdate);
+// }
+// }
 }
 
 
@@ -38,10 +55,12 @@ function enable(){
   //click save teams
   function saveTeam(){
       console.log( "inside saveTeam" );
-
   }//ends saveTeam
 
   //toggle past teams
+  function viewAllTeams(){
+    console.log( "inside viewAllTeams");
+  }//ends viewAllTeams
 
 //logic
 function retrieveNumTeams(){
