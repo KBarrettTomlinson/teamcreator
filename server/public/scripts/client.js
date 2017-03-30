@@ -139,5 +139,15 @@ function displayTeam(teamsArray){
   //post /teams -POST CURRENT teams
   function postTeam(){
     console.log( "inside postTeam" );
+    console.log ("I think you're trying to send this:", teamsArray);
+    var teamObject = {groupsArray: teamsArray};
+    $.ajax({
+      type: 'POST',
+      url: '/teams',
+      data: teamObject,
+      success: function(response){
+        console.log("I posted your thing!", response);
+      }
+    });
 
   }//ends ajax post postTeam
