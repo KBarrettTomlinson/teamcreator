@@ -1,0 +1,14 @@
+body {
+  background-color: #ede8e3;
+  font-size: 30px;
+}
+
+
+.teamNumber {
+  border-bottom: 3px solid darkgray;
+}
+
+[class*='col-md-4']:hover{
+  min-height: 50px;
+  border: 1px solid darkgray;
+}
