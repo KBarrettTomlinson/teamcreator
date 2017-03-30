@@ -6,6 +6,7 @@ var port = 3000;
 // var index = require('./routes/index.js');
 // var people = require('./routes/people.js');
 // var teams = require('./routes/teams.js');
+var install =  require('./routes/install.js');
 
 //mongoose config
 var mongoose = require("mongoose");
@@ -27,6 +28,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 // app.use('/', index);
 // app.use('/people', people);
 // app.use('/teams', teams);
+app.use('/install', install);
 
 // spin up server
 app.listen(port, function() {
