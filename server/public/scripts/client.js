@@ -135,7 +135,7 @@ function displayTeam(teamsArray){
 
 function addConfirmButton(){
     var $el = $ ( '#outputDiv');
-    $el.append('<div class="row"></div>');
+    $el.append('<div class= "btn-group" "col-md-12" "btn-color"></div>');
     $el1 = $el.children().last();
     $el1.append('<div class="btn-group">' +
     '<button type="button" id= "confirmBtn" class="btn btn-primary btn-lg">' +
