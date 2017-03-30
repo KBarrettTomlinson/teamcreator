@@ -3,6 +3,7 @@ var peopleArray = [];
 var randomArray = [];
 var teamsArray= [];
 var newTeams = true;
+var pastTeamsOff = true;
 //document ready
 $( document ).ready(function(){
   console.log( "I'm here for you." );
@@ -22,12 +23,12 @@ function enable(value){
   if(value){
     $( '#numberOfTeamsBtn' ).on( 'click', generateTeam);
     $( '#outputDiv').on( 'click', '#confirmBtn', saveTeam);
-    //$( '#outputDiv').on( 'click', '.generateTeamBtn', generateAllTeams);
+    $( '#showPastTeams').on( 'click', pastTeamsToggle);
   }//ends if
   else{
     $( '#numberOfTeamsBtn' ).off( 'click', generateTeam);
     $( '#outputDiv').off( 'click', '#confirmBtn', saveTeam);
-    //$( '#outputDiv').off( 'click', '.generateTeamBtn', generateAllTeams);
+    $( '#showPastTeams').off( 'click', pastTeamsToggle);
   }
 }//ends function enable
 
@@ -47,8 +48,21 @@ function enable(value){
   }//ends saveTeam
 
   //toggle past teams
+  function pastTeamsToggle() {
+    if (pastTeamsOff) {
+      viewAllTeams();
+      pastTeamsOff = false;
+    } else {
+      $('#pastOutputDiv').empty();
+      pastTeamsOff = true;
+    }
+  }//ends pastTeamsToggle
+
+  //clears div and shows past teams
   function viewAllTeams(){
     console.log( "inside viewAllTeams");
+    $('#pastOutputDiv').empty();
+    getTeams();
   }//ends viewAllTeams
 
 //logic
