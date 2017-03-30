@@ -6,36 +6,92 @@
     <meta http-equiv="X-UA-Compatible" content="IE-edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Team Creator Challenge</title>
-    <link href="../vendors/css/bootstrap.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
-    <script type="text/javascript" src="../vendors/jquery.js"></script>
-    <script type="text/javascript" src="../scripts/client.js"></script>
+    <link href="vendors/css/bootstrap.css" rel="stylesheet">
+    <link href="views/style.css" rel="stylesheet">
+    <script type="text/javascript" src="vendors/jquery.js"></script>
+    <script type="text/javascript" src="scripts/client.js"></script>
   </head>
 
   <body>
     <div class="container">
+
       <div class="row">
-        <div class="col-md-12">
-          <form class="form-inline">
-            <div class="form-team">
-              <label for="numberOfTeams">How many teams?</label>
-              <input type="text" name="newTask" data-task="newTask" placeholder="number of teams needed"id="newTeams">
+
+            <div class="col-md-6">
+              <form class="form-inline">
+                <div class="form-team">
+                  <label for="numberOfTeams">How Many Teams?</label>
+                  <input type="text" name="newTask" data-task="newTask" id="newByTeams">
+                </div>
+                <div class="btn-group">
+                  <button type="button" id= "numberOfTeamsBtn" class="btn btn-primary btn-lg">Generate Teams</button>
+                </div>
+              </form>
             </div>
-              <!-- <input type="submit" class: "btn btn-default" value="submit"> -->
-              <button id="getTeamBtn" type="button" name="button">Submit</button>
-          </form>
+
+            <div class="col-md-6">
+              <form class="form-inline">
+                <div class="form-team">
+                  <label for="numberOfMembers">How many peoples per team?</label>
+                  <input type="text" name="newTask" data-task="newTask" id="newByMembers">
+                </div>
+                <div class="btn-group">
+                  <button type="button" id= "numberOfMembersBtn" class="btn btn-primary btn-lg">Generate Teams</button>
+                </div>
+              </form>
+            </div>
+      </div>
+
+      <div class="row" "outputDiv" id=outputDiv>
+            <div class="col-md-4" "teamOne">
+              <p class= teamNumber>Team 1</p>
+            </div>
+            <div class="col-md-4" "teamTwo">
+              <p class= teamNumber>Team 2</p>
+            </div>
+            <div class="col-md-4" "teamThree">
+              <p class= teamNumber>Team 3</p>
+            </div>
+      </div>
+
+      <div class="row">
+            <div class="col-md-4" "teamFour">
+              <p class= teamNumber>Team 4</p>
+            </div>
+            <div class="col-md-4" "teamFive">
+              <p class= teamNumber>Team 5</p>
+            </div>
+            <div class="col-md-4" "teamSix">
+              <p class= teamNumber>Team 6</p>
+            </div>
+      </div>
+
+
+
+      <div class="row">
+        <div class="btn-group">
+          <button type="button" id= "pastTeamsBtn" class="btn btn-primary btn-lg btn-block">Display Past Teams</button>
         </div>
+      </div>
+
+      <div class="row" "pastOutputDiv" id=pastOutputDiv>
+            <div class="col-md-4" "teamFour">
+              <p class= pastTeamNumber>Past Team 1</p>
+            </div>
+            <div class="col-md-4" "teamFive">
+              <p class= pastTeamNumber>Team 5</p>
+            </div>
+            <div class="col-md-4" "teamSix">
+              <p class= pastTeamNumber>Team 6</p>
+            </div>
+      </div>
+
+
+
+
+
     </div>
 
-
-
-
-
-
-
-
-    </div>
-
-    <script src="../vendors/js/bootstrap.js"></script>
+    <script src="vendors/js/bootstrap.js"></script>
   </body>
 </html>

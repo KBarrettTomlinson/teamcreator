@@ -19,12 +19,12 @@ function enable(value){
   console.log( "inside enable" );
   //on click generateTeam -  gets PEOPLE
   if(value){
-    $( '#getTeamBtn' ).on( 'click', generateTeam);
+    $( '#numberOfTeamsBtn' ).on( 'click', generateTeam);
     //$( '#outputDiv').on( 'click', '.saveTeamBtn', saveTeam);
     //$( '#outputDiv').on( 'click', '.generateTeamBtn', generateAllTeams);
   }//ends if
   else{
-    $( '#getTeamBtn' ).off( 'click', generateTeam);
+    $( '#numberOfTeamsBtn' ).off( 'click', generateTeam);
     //$( '#outputDiv').off( 'click', '.saveTeamBtn', saveTeam);
     //$( '#outputDiv').off( 'click', '.generateTeamBtn', generateAllTeams);
   }
