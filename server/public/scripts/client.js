@@ -127,7 +127,7 @@ function displayTeam(teamsArray){
       $el1.append('<p class = "teamMember">'+teamsArray[i][j].person+'</p>');
     }//ends for loop that appends team members
   }//ends team append for loop
-<<<<<<< HEAD
+
   $el.append('<div class="btn-group">' +
   '<button type="button" id= "confirmBtn" class="btn btn-primary btn-lg">' +
   'Confirm Teams</button></div>');
