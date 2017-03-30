@@ -22,4 +22,7 @@ router.get('/', function(req, res) {
 });
 
 // exports
-module.exports = router;
+module.exports = {
+  router: router,
+  People: People,
+};
