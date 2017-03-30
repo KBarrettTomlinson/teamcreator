@@ -146,7 +146,17 @@ function addConfirmButton(){
   //get /teams -GET PAST teams
   function getTeams(){
     console.log( "inside getTeams");
-    newTeams = false;
+    $.ajax({
+      type: 'GET',
+      url: '/teams',
+      success: function (response) {
+        console.log("Reponse from GET /teams", response);
+        for (var i = 0; i < response.length; i++) {
+          newTeams = false;
+          displayTeam(response[i].groupsArray);
+        }
+      }
+    });
   }//ends ajax get getTeams
 
   //post /teams -POST CURRENT teams
