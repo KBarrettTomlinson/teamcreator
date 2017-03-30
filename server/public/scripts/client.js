@@ -86,17 +86,47 @@ function assignTeams(numTeams, randArray){
     teamsArray[i % numTeams].push(randArray[i]);
   }//ends for loop add people to teamsdata
   console.log( "inside assignTeams, teamsArray", teamsArray);
+  return teamsArray;
 }//ends assignTeams
 
 //DOM methods
-function displayTeam(num, array){
+function displayTeam(teamsArray){
   console.log( "inside displayTeam" );
+  console.log( "inside displayTeam, teamsArray", teamsArray);
+
+  var $el = $ ( '#outputDiv' );
+  // for loop that appends 1 team
+  for ( var i = 0; i < teamsArray.length; i++){
+    $el.append( '<div class = "col-md-4" "team"></div>');
+    var $el1 = $el.children().last();
+    $el1.append( '<p class = "teamNumber">Team '+(i+1)+'</p>');
+
+    for (var j = 0; j < teamsArray[i].length; j++){
+      $el1.append('<p class = "teamMember">'+teamsArray[i][j].person+'</p>');
+    }//ends for loop that appends team members
+  }//ends team append for loop
+
+
+
+
+
+
+  // <div class="row">
+  //       <div class="col-md-4" "teamFour">
+  //         <p class= teamNumber>Team 4</p>
+  //       </div>
+  //       <div class="col-md-4" "teamFive">
+  //         <p class= teamNumber>Team 5</p>
+  //       </div>
+  //       <div class="col-md-4" "teamSix">
+  //         <p class= teamNumber>Team 6</p>
+  //       </div>
+  // </div>
 
 }//ends displayTeam
 
 
 //REST interface
-
   //get /people -GET PEOPLE
   function getPeople(numTeams){
     console.log( "inside getPeople" );
@@ -105,9 +135,11 @@ function displayTeam(num, array){
         url: '/people',
         success: function(response){
           console.log( "I've come back from /people, and I brought this:", response);
-          console.log("inside getPeople numTeams", numTeams);
+          console.log( "this is response[4]", response[4]);
+          console.log( "inside getPeople numTeams", numTeams);
           randomArray = randomizePeople(response);
           teamsArray = assignTeams(numTeams, randomArray);
+          console.log( "inside get people after assignTeams, teamsArray", teamsArray);
           displayTeam(teamsArray);
         }//end success
     });//ends ajax GET
