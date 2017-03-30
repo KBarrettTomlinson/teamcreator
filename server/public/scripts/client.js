@@ -19,12 +19,12 @@ function enable(value){
   console.log( "inside enable" );
   //on click generateTeam -  gets PEOPLE
   if(value){
-    $( '#getTeamBtn' ).on( 'click', generateTeam);
+    $( '#numberOfTeamsBtn' ).on( 'click', generateTeam);
     //$( '#outputDiv').on( 'click', '.saveTeamBtn', saveTeam);
     //$( '#outputDiv').on( 'click', '.generateTeamBtn', generateAllTeams);
   }//ends if
   else{
-    $( '#getTeamBtn' ).off( 'click', generateTeam);
+    $( '#numberOfTeamsBtn' ).off( 'click', generateTeam);
     //$( '#outputDiv').off( 'click', '.saveTeamBtn', saveTeam);
     //$( '#outputDiv').off( 'click', '.generateTeamBtn', generateAllTeams);
   }
@@ -37,9 +37,10 @@ function enable(value){
     console.log( "inside generate team" );
     var numTeams = retrieveNumTeams();
     peopleArray = getPeople();
-    randomArray = randomizePeople(peopleArray);
-    teamsArray = assignTeams(randomArray);
-    displayTeam(numTeams, teamsArray);
+    console.log("peopleArray after getPeople:", peopleArray);
+    // randomArray = randomizePeople(peopleArray);
+    // teamsArray = assignTeams(randomArray);
+    // displayTeam(numTeams, teamsArray);
   }//ends generateTeam
 
   //click save teams
@@ -96,7 +97,9 @@ function displayTeam(num, array){
         url: '/people',
         success: function(response){
           console.log( "I've come back from /people, and I brought this:", response);
-          return response;
+          randomArray = randomizePeople(response);
+          teamsArray = assignTeams(randomArray);
+          displayTeam(numTeams, teamsArray);
         }//end success
     });//ends ajax GET
   }//ends ajax get getPeople
