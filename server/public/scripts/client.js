@@ -95,7 +95,16 @@ function displayTeam(teamsArray){
 
   var $el = $ ( '#outputDiv' );
   // for loop that appends 1 team
-    //for loop that appends team members
+  for ( var i = 0; i < teamsArray.length; i++){
+    $el.append( '<div class = "col-md-4" "team"></div>');
+    var $el1 = $el.children().last();
+    $el1.append( '<p class = "teamNumber">Team '+(i+1)+'</p>');
+
+    for (var j = 0; j < teamsArray[i].length; j++){
+      $el1.append('<p class = "teamMember">'+teamsArray[i][j].person+'</p>');
+    }//ends for loop that appends team members
+  }//ends team append for loop
+
 
 
 
