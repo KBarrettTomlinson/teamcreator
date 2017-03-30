@@ -25,9 +25,9 @@ MongoDB.once("open", function(){
 // uses
 app.use(express.static('server/public'));
 app.use(bodyParser.urlencoded({extended: true}));
-// app.use('/', index);
-// app.use('/people', people);
-// app.use('/teams', teams);
+app.use('/', index);
+app.use('/people', people.router);
+app.use('/teams', teams);
 app.use('/install', install);
 
 // spin up server
