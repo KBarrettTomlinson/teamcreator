@@ -46,6 +46,7 @@ function enable(value){
   function saveTeam(){
       console.log( "inside saveTeam" );
       postTeam();
+      viewAllTeams();
   }//ends saveTeam
 
   //toggle past teams
