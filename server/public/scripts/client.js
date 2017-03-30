@@ -151,8 +151,8 @@ function addConfirmButton(){
       url: '/teams',
       success: function (response) {
         console.log("Reponse from GET /teams", response);
+        newTeams = false;
         for (var i = 0; i < response.length; i++) {
-          newTeams = false;
           displayTeam(response[i].groupsArray);
         }
       }
