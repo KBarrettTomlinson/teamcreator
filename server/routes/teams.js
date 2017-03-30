@@ -12,6 +12,7 @@ var Groups = mongoose.model('Groups', GroupSchema);
 
 // routes
 router.get('/', function(req, res) {
+  console.log("quack");
   Groups.find(function(err, allGroups) {
     if (err) {
       console.log(err);

@@ -136,11 +136,11 @@ function displayTeam(teamsArray){
     console.log( "inside getTeams");
     $.ajax({
       type: 'GET',
-      URL: '/teams',
+      url: '/teams',
       success: function (response) {
         console.log("Reponse from GET /teams", response);
         for (var i = 0; i < response.length; i++) {
-          displayTeam(response[i]);
+          displayTeam(response[i].groupsArray);
         }
       }
     });
